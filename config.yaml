@@ -38,8 +38,8 @@ params:
             default: Licensed under CC BY-NC-SA 4.0
 
     comments:
-        enabled: false
-        provider: disqus
+        enabled: enabled
+        provider: waline
 
         disqusjs:
             shortname:
@@ -73,19 +73,25 @@ params:
             autoCreateIssue: false
 
         # Waline client configuration see: https://waline.js.org/en/reference/client/props.html
-        waline:
-            serverURL:
-            lang:
-            visitor:
-            avatar:
+            waline:
+            serverURL: 
+            lang: 'zh'
+            visitor: false
+            pageview: false
+            highlight: true
+            comment: true
+            dark: false
             emoji:
-                - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
+                - https://cdn.jsdelivr.net/gh/norevi/waline-blobcatemojis@1.0/blobs
+                - https://cdn.jsdelivr.net/gh/norevi/blob-emoji-for-waline@2.0/blobs-gif
+                - https://cdn.jsdelivr.net/gh/norevi/blob-emoji-for-waline@2.0/blobs-png
             requiredMeta:
-                - nick
-                - mail
+                - 昵称
+                - 邮箱
+                - 网址(非必填)
             locale:
-                admin: Admin
-                placeholder:
+                admin: 修改为自定义的管理员（也就是博主）。
+                placeholder: "在这里写评论框中默认显示的信息。"
 
         twikoo:
             envId:
@@ -151,3 +157,8 @@ params:
 
 frontmatter:
   lastmod: [":fileModTime", "lastmod"]
+
+enableGitInfo: true # use git commit log to generate lastmod record
+
+frontmatter:
+    lastmod: [':git', 'lastmod', 'date', 'publishDate']
